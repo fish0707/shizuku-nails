@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>預約須知｜Shizuku.nails 雫</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --c-bg: #F2EDE7; --c-card: #F9F8F6; --c-linen: #D4CBC0;
+      --c-mink: #9A8F84; --c-bark: #6B5F54; --c-umber: #4A3F35;
+      --c-charcoal: #2C2824;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--c-bg); font-family: 'DM Sans', sans-serif; color: var(--c-charcoal); -webkit-font-smoothing: antialiased; margin: 0; }
+    .page-shell { max-width: 430px; margin: 0 auto; background: var(--c-bg); min-height: 100vh; box-shadow: 0 0 60px rgba(44,40,36,.08); display: flex; flex-direction: column; }
+    .top-nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(16px); background: rgba(242,237,231,.92); border-bottom: 1px solid rgba(212,203,192,.5); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; }
+    .content { flex: 1; padding: 24px 16px 120px; }
+    .notice-item { display: flex; gap: 10px; padding: 12px 0; border-bottom: 1px solid rgba(212,203,192,.4); }
+    .notice-item:last-child { border-bottom: none; }
+    .notice-arrow { color: var(--c-bark); font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+    .bottom-bar { position: sticky; bottom: 0; background: rgba(242,237,231,.95); backdrop-filter: blur(12px); border-top: 1px solid rgba(212,203,192,.5); padding: 16px; }
+    .agree-box { display: flex; align-items: center; gap: 12px; cursor: pointer; padding: 14px 16px; background: var(--c-card); border-radius: 10px; border: 2px solid var(--c-linen); margin-bottom: 12px; transition: all 0.3s; }
+    .agree-box.checked { border-color: var(--c-bark); background: rgba(107,95,84,.04); }
+    .agree-check { width: 20px; height: 20px; border-radius: 4px; border: 2px solid var(--c-linen); background: #fff; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+    .agree-box.checked .agree-check { background: var(--c-bark); border-color: var(--c-bark); }
+    .btn-primary { width: 100%; background: var(--c-umber); color: #fff; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; padding: 14px; border-radius: 8px; border: none; cursor: pointer; transition: all 0.3s; }
+    .btn-primary:hover { background: var(--c-charcoal); }
+    .btn-primary:disabled { opacity: .4; cursor: not-allowed; }
+  </style>
+</head>
+
+<body>
+<div class="page-shell">
+
+  <!-- 導覽列 -->
+  <nav class="top-nav">
+    <a href="index.html" style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;letter-spacing:0.2em;color:#2C2824;font-style:italic;text-decoration:none;">Shizuku.nails 雫</a>
+    <span style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#9A8F84;">預約須知</span>
+  </nav>
+
+  <!-- 內容 -->
+  <div class="content">
+
+    <!-- 標題 -->
+    <div style="text-align:center;margin-bottom:24px;">
+      <h1 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;font-style:italic;color:#6B5F54;margin-bottom:6px;">預約須知</h1>
+      <p style="font-size:12px;font-weight:600;color:#4A3F35;letter-spacing:.05em;">保障雙方權益 請務必詳閱</p>
+    </div>
+
+    <!-- 須知卡片 -->
+    <div style="background:linear-gradient(135deg,#F5EEE7,#EDE4D9);border-radius:16px;padding:20px;border:1px solid rgba(180,162,144,.3);margin-bottom:20px;">
+
+      <div class="notice-item">
+        <span class="notice-arrow">▸</span>
+        <p style="font-size:12px;color:#4A3F35;line-height:1.85;">送出預約視同已詳閱預約須知，並同意和接受。如有疑問可事前提出及討論，完成預約後一律以工作室的認知為基準。</p>
+      </div>
+
+      <div class="notice-item">
+        <span class="notice-arrow">▸</span>
+        <p style="font-size:12px;color:#4A3F35;line-height:1.85;">首次預約請上傳清晰的甲況照片至聊天室（無論素甲或有做指甲）。</p>
+      </div>
+
+      <div class="notice-item">
+        <span class="notice-arrow">▸</span>
+        <p style="font-size:12px;color:#4A3F35;line-height:1.85;">無特別提供單色色卡，如果想施作單色的女孩請於預約時一併告知想施作的顏色！</p>
+      </div>
+
+      <div class="notice-item">
+        <span class="notice-arrow">▸</span>
+        <p style="font-size:12px;color:#4A3F35;line-height:1.85;">支付方式：現金、網銀轉帳。</p>
+      </div>
+
+      <div class="notice-item">
+        <span class="notice-arrow">▸</span>
+        <p style="font-size:12px;color:#4A3F35;line-height:1.85;">施作時間視款式約 <strong>3–3.5 個小時</strong>左右不等，請保留充裕時間喲！</p>
+      </div>
+
+      <div class="notice-item">
+        <span class="notice-arrow">▸</span>
+        <p style="font-size:12px;color:#4A3F35;line-height:1.85;">客帶圖無法完全復刻，完美主義者請自行斟酌。</p>
+      </div>
+
+      <div class="notice-item">
+        <span class="notice-arrow">▸</span>
+        <p style="font-size:12px;color:#4A3F35;line-height:1.85;">未經提前至少 <strong>兩天</strong> 告知更改時段或遲到 10 分鐘者「視同取消」，累犯 2 次則不再提供服務，請確認時間再預約。</p>
+      </div>
+
+      <div class="notice-item">
+        <span class="notice-arrow">▸</span>
+        <p style="font-size:12px;color:#4A3F35;line-height:1.85;">如有不當言行、惡意挑戰工作室規範者，工作室有權即刻終止所有服務。</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 底部同意按鈕 -->
+  <div class="bottom-bar">
+    <!-- 勾選框 -->
+    <div class="agree-box" id="agreeBox" onclick="toggleAgree()">
+      <div class="agree-check" id="agreeCheck"></div>
+      <p style="font-size:12px;color:#4A3F35;line-height:1.6;">我已詳閱並同意以上預約須知</p>
+    </div>
+    <!-- 進入預約按鈕 -->
+    <button class="btn-primary" id="btnProceed" disabled onclick="proceed()">
+      進入線上預約
+    </button>
+  </div>
+
+</div>
+
+<script>
+  let agreed = false;
+
+  function toggleAgree() {
+    agreed = !agreed;
+    const box = document.getElementById('agreeBox');
+    const check = document.getElementById('agreeCheck');
+    const btn = document.getElementById('btnProceed');
+
+    if (agreed) {
+      box.classList.add('checked');
+      check.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>';
+      btn.disabled = false;
+    } else {
+      box.classList.remove('checked');
+      check.innerHTML = '';
+      btn.disabled = true;
+    }
+  }
+
+  function proceed() {
+    if (!agreed) return;
+    // 跳轉到 booking.html
+    window.location.href = 'booking.html';
+  }
+</script>
+</body>
+</html>

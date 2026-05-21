@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>線上預約｜Shizuku.nails 雫 台中私人美甲工作室</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: { parchment:'#F9F8F6',oat:'#E5E0D8',linen:'#D4CBC0',mink:'#9A8F84',bark:'#6B5F54',umber:'#4A3F35',charcoal:'#2C2824' },
+        fontFamily: { serif:['Cormorant Garamond','Georgia','serif'], sans:['DM Sans','sans-serif'] }
+      }}
+    }
+  </script>
+  <style>
+    :root{ --c-bg:#F2EDE7;--c-card:#F9F8F6;--c-linen:#D4CBC0;--c-mink:#9A8F84;--c-bark:#6B5F54;--c-umber:#4A3F35;--c-charcoal:#2C2824;--transition:0.3s cubic-bezier(0.4,0,0.2,1); }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--c-bg);font-family:'DM Sans',sans-serif;color:var(--c-charcoal);-webkit-font-smoothing:antialiased}
+    ::-webkit-scrollbar{width:4px} ::-webkit-scrollbar-thumb{background:var(--c-linen);border-radius:2px}
+    .page-shell{max-width:430px;margin:0 auto;background:var(--c-bg);min-height:100vh;box-shadow:0 0 60px rgba(44,40,36,.08)}
+    .top-nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(16px);background:rgba(242,237,231,.92);border-bottom:1px solid rgba(212,203,192,.5)}
+    .step-bar{display:flex;align-items:center;padding:16px 20px;gap:0}
+    .step-item{display:flex;align-items:center;gap:6px;flex:1}
+    .step-circle{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;transition:all var(--transition);flex-shrink:0}
+    .step-circle.active{background:var(--c-umber);color:#fff}
+    .step-circle.done{background:var(--c-bark);color:#fff}
+    .step-circle.pending{background:var(--c-linen);color:var(--c-mink)}
+    .step-label{font-size:10px;letter-spacing:.05em;color:var(--c-mink);white-space:nowrap}
+    .step-label.active{color:var(--c-umber);font-weight:500}
+    .step-line{flex:1;height:1px;background:var(--c-linen);margin:0 4px}
+    .step-line.done{background:var(--c-bark)}
+    .panel{display:none;padding:20px 16px;animation:fadeUp .35s ease both}
+    .panel.active{display:block}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    .svc-card{background:var(--c-card);border-radius:12px;border:2px solid transparent;padding:14px;cursor:pointer;transition:all var(--transition);display:flex;align-items:flex-start;gap:12px}
+    .svc-card:hover{border-color:var(--c-linen);transform:translateY(-2px);box-shadow:0 8px 24px rgba(44,40,36,.08)}
+    .svc-card.selected{border-color:var(--c-bark);background:rgba(107,95,84,.05)}
+    .svc-thumb{width:64px;height:64px;border-radius:8px;object-fit:cover;background:linear-gradient(135deg,#D4CBC0,#B8AD9F);flex-shrink:0}
+    .svc-radio{width:18px;height:18px;border-radius:50%;border:2px solid var(--c-linen);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:all var(--transition)}
+    .svc-card.selected .svc-radio{border-color:var(--c-bark);background:var(--c-bark)}
+    .svc-card.selected .svc-radio::after{content:'';width:6px;height:6px;border-radius:50%;background:#fff}
+    .addon-card{background:var(--c-card);border-radius:10px;border:2px solid transparent;padding:12px 14px;cursor:pointer;transition:all var(--transition);display:flex;align-items:center;justify-content:space-between}
+    .addon-card:hover{border-color:var(--c-linen)}
+    .addon-card.selected{border-color:var(--c-bark);background:rgba(107,95,84,.05)}
+    .addon-check{width:18px;height:18px;border-radius:4px;border:2px solid var(--c-linen);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all var(--transition)}
+    .addon-card.selected .addon-check{border-color:var(--c-bark);background:var(--c-bark)}
+    .addon-card.selected .addon-check::after{content:'✓';font-size:11px;color:#fff;font-weight:600;line-height:1}
+    .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+    .cal-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:13px;cursor:default;color:var(--c-mink)}
+    .cal-day.has-slot{cursor:pointer;color:var(--c-charcoal);font-weight:500;transition:all var(--transition)}
+    .cal-day.has-slot:hover{background:var(--c-oat)}
+    .cal-day.selected{background:var(--c-bark)!important;color:#fff!important}
+    .cal-day.today{outline:1px solid var(--c-linen);border-radius:50%}
+    .cal-day.past{opacity:.35}
+    .slot-btn{border:1.5px solid var(--c-linen);border-radius:8px;padding:10px 8px;font-size:13px;font-weight:500;color:var(--c-bark);background:var(--c-card);cursor:pointer;transition:all var(--transition);text-align:center}
+    .slot-btn:hover{border-color:var(--c-bark);background:rgba(107,95,84,.06)}
+    .slot-btn.selected{border-color:var(--c-bark);background:var(--c-bark);color:#fff}
+    .slot-btn.taken{opacity:.4;cursor:not-allowed;text-decoration:line-through}
+    .form-input{width:100%;background:var(--c-bg);border:1.5px solid var(--c-linen);border-radius:8px;padding:10px 14px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--c-charcoal);outline:none;transition:border-color var(--transition),box-shadow var(--transition);appearance:none}
+    .form-input:focus{border-color:var(--c-bark);box-shadow:0 0 0 3px rgba(107,95,84,.1)}
+    .form-label{display:block;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--c-mink);margin-bottom:6px;font-weight:500}
+    .summary-row{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid rgba(212,203,192,.4);font-size:13px}
+    .summary-row:last-child{border-bottom:none}
+    .bottom-bar{position:sticky;bottom:0;background:rgba(242,237,231,.95);backdrop-filter:blur(12px);border-top:1px solid rgba(212,203,192,.5);padding:12px 16px;display:flex;gap:10px;z-index:40}
+    .btn-primary{flex:1;background:var(--c-umber);color:#fff;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;padding:13px;border-radius:8px;border:none;cursor:pointer;transition:all var(--transition)}
+    .btn-primary:hover{background:var(--c-charcoal)}
+    .btn-primary:disabled{opacity:.45;cursor:not-allowed}
+    .btn-secondary{background:transparent;color:var(--c-mink);font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.15em;text-transform:uppercase;padding:13px 16px;border-radius:8px;border:1.5px solid var(--c-linen);cursor:pointer;transition:all var(--transition);white-space:nowrap}
+    .btn-secondary:hover{border-color:var(--c-mink);color:var(--c-bark)}
+    .sec-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;font-weight:400;color:var(--c-bark);letter-spacing:.1em;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+    .sec-title::before,.sec-title::after{content:'';flex:1;height:1px;background:var(--c-linen)}
+    .loading-spinner{width:32px;height:32px;border:3px solid var(--c-linen);border-top-color:var(--c-bark);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .toast{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-80px);background:var(--c-charcoal);color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;padding:12px 24px;border-radius:50px;z-index:200;transition:transform .4s cubic-bezier(.34,1.56,.64,1);white-space:nowrap}
+    .toast.show{transform:translateX(-50%) translateY(0)}
+    .price-tag{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:300;color:var(--c-bark);white-space:nowrap}
+    .sub-option{display:flex;gap:8px;margin-top:8px}
+    .sub-btn{flex:1;padding:8px 4px;border-radius:6px;border:1.5px solid var(--c-linen);font-size:12px;text-align:center;cursor:pointer;color:var(--c-mink);background:var(--c-card);transition:all var(--transition)}
+    .sub-btn:hover{border-color:var(--c-bark);color:var(--c-bark)}
+    .sub-btn.selected{border-color:var(--c-bark);background:var(--c-bark);color:#fff}
+  </style>
+</head>
+<body>
+<div class="page-shell">
+
+  <nav class="top-nav px-5 py-3 flex items-center justify-between">
+    <a href="index.html" class="font-serif text-lg font-light tracking-[0.2em] text-charcoal italic">Shizuku.nails 雫</a>
+    <span class="font-sans text-xs tracking-widest uppercase text-mink">線上預約</span>
+  </nav>
+
+  <div class="step-bar" id="stepBar">
+    <div class="step-item"><div class="step-circle active" id="sc1">1</div><span class="step-label active" id="sl1">服務</span></div>
+    <div class="step-line" id="line12"></div>
+    <div class="step-item"><div class="step-circle pending" id="sc2">2</div><span class="step-label" id="sl2">時段</span></div>
+    <div class="step-line" id="line23"></div>
+    <div class="step-item"><div class="step-circle pending" id="sc3">3</div><span class="step-label" id="sl3">資料</span></div>
+    <div class="step-line" id="line34"></div>
+    <div class="step-item"><div class="step-circle pending" id="sc4">4</div><span class="step-label" id="sl4">確認</span></div>
+  </div>
+
+  <!-- STEP 1：服務選擇 -->
+  <div class="panel active" id="step1">
+    <div class="sec-title">選擇服務</div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+
+      <div class="svc-card" onclick="selectService(this,'單色／漸層',600,null)">
+        <img src="ombre.jpg" class="svc-thumb" alt="單色漸層" onerror="this.style.display='none'">
+        <div style="flex:1;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;color:#2C2824;">單色／漸層</span>
+            <span class="price-tag">$600</span>
+          </div>
+          <p style="font-size:11px;color:#9A8F84;line-height:1.6;">含基礎保養・可跳色／鏡面／貓眼</p>
+        </div>
+        <div class="svc-radio"></div>
+      </div>
+
+      <div class="svc-card" onclick="selectService(this,'鏡面／貓眼／法式美甲',0,'french')">
+        <img src="french.jpg" class="svc-thumb" alt="法式美甲" onerror="this.style.display='none'">
+        <div style="flex:1;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;color:#2C2824;">鏡面／貓眼／法式美甲</span>
+            <span class="price-tag">$800起</span>
+          </div>
+          <p style="font-size:11px;color:#9A8F84;line-height:1.6;">含基礎保養・約 2 小時</p>
+          <div class="sub-option" id="subFrench" style="display:none;">
+            <div class="sub-btn" onclick="selectSub(event,'無底色',800)">無底色 $800</div>
+            <div class="sub-btn" onclick="selectSub(event,'有底色',900)">有底色 $900</div>
+          </div>
+        </div>
+        <div class="svc-radio"></div>
+      </div>
+
+      <div class="svc-card" onclick="selectService(this,'造型款設計',1100,null)">
+        <img src="design.jpg" class="svc-thumb" alt="造型款設計" onerror="this.style.display='none'">
+        <div style="flex:1;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;color:#2C2824;">造型款設計</span>
+            <span class="price-tag">$1,100起</span>
+          </div>
+          <p style="font-size:11px;color:#9A8F84;line-height:1.6;">含基礎保養，依款式計價，不含延甲・飾品</p>
+        </div>
+        <div class="svc-radio"></div>
+      </div>
+
+      <div class="svc-card" onclick="selectService(this,'傳圖客製設計',1500,null)">
+        <img src="care.jpg" class="svc-thumb" alt="傳圖客製設計" onerror="this.style.display='none'">
+        <div style="flex:1;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;color:#2C2824;">傳圖客製設計</span>
+            <span class="price-tag">$1,500起</span>
+          </div>
+          <p style="font-size:11px;color:#9A8F84;line-height:1.6;">依圖報價，延甲・飾品另計，最多三款為限</p>
+        </div>
+        <div class="svc-radio"></div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:24px;">
+      <div class="sec-title">加購項目 <span style="font-size:12px;font-style:normal;letter-spacing:0;color:#9A8F84;">（可複選）</span></div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="addon-card" onclick="toggleAddon(this,'我家卸甲續作',200)">
+          <div><p style="font-size:13px;color:#2C2824;">我家卸甲續作</p></div>
+          <div style="display:flex;align-items:center;gap:10px;"><span class="price-tag" style="font-size:15px;">+$200</span><div class="addon-check"></div></div>
+        </div>
+        <div class="addon-card" onclick="toggleAddon(this,'他店卸甲續作',300)">
+          <div><p style="font-size:13px;color:#2C2824;">他店卸甲續作 <small style="color:#9A8F84;">難卸+$150</small></p></div>
+          <div style="display:flex;align-items:center;gap:10px;"><span class="price-tag" style="font-size:15px;">+$300</span><div class="addon-check"></div></div>
+        </div>
+        <div class="addon-card" onclick="toggleAddon(this,'調色',100)">
+          <div><p style="font-size:13px;color:#2C2824;">調色</p></div>
+          <div style="display:flex;align-items:center;gap:10px;"><span class="price-tag" style="font-size:15px;">+$100</span><div class="addon-check"></div></div>
+        </div>
+        <div class="addon-card" onclick="toggleAddon(this,'延甲（每指）',100)">
+          <div><p style="font-size:13px;color:#2C2824;">延甲</p><p style="font-size:11px;color:#9A8F84;">$100/指，最多3指</p></div>
+          <div style="display:flex;align-items:center;gap:10px;"><span class="price-tag" style="font-size:15px;">+$100起</span><div class="addon-check"></div></div>
+        </div>
+        <div class="addon-card" onclick="toggleAddon(this,'上翹甲/甲型彎曲',200)">
+          <div><p style="font-size:13px;color:#2C2824;">上翹甲・甲型彎曲</p></div>
+          <div style="display:flex;align-items:center;gap:10px;"><span class="price-tag" style="font-size:15px;">+$200</span><div class="addon-check"></div></div>
+        </div>
+        <div class="addon-card" onclick="toggleAddon(this,'飾品/卸鑽',50)">
+          <div><p style="font-size:13px;color:#2C2824;">飾品・卸鑽</p><p style="font-size:11px;color:#9A8F84;">請於備註說明</p></div>
+          <div style="display:flex;align-items:center;gap:10px;"><span class="price-tag" style="font-size:15px;">$50/指</span><div class="addon-check"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;background:#F9F8F6;border-radius:10px;padding:14px 16px;border:1px solid rgba(212,203,192,.6);">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;">
+        <span style="font-size:12px;color:#9A8F84;letter-spacing:.1em;text-transform:uppercase;">預估金額</span>
+        <span class="price-tag" style="font-size:22px;" id="totalPrice">請選擇服務</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2：時段選擇 -->
+  <div class="panel" id="step2">
+    <div style="text-align:center;padding:20px 0 8px;">
+      <div id="loadingSlots" style="display:none;">
+        <div class="loading-spinner"></div>
+        <p style="font-size:12px;color:#9A8F84;margin-top:12px;">載入可預約時段中…</p>
+      </div>
+    </div>
+    <div id="calendarWrap">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+        <button onclick="prevMonth()" style="background:none;border:none;cursor:pointer;color:#6B5F54;font-size:18px;padding:4px 8px;">‹</button>
+        <span class="font-serif" style="font-size:18px;font-style:italic;color:#6B5F54;" id="calTitle"></span>
+        <button onclick="nextMonth()" style="background:none;border:none;cursor:pointer;color:#6B5F54;font-size:18px;padding:4px 8px;">›</button>
+      </div>
+      <div class="cal-grid" style="margin-bottom:8px;">
+        <div style="text-align:center;font-size:11px;color:#9A8F84;">一</div>
+        <div style="text-align:center;font-size:11px;color:#9A8F84;">二</div>
+        <div style="text-align:center;font-size:11px;color:#9A8F84;">三</div>
+        <div style="text-align:center;font-size:11px;color:#9A8F84;">四</div>
+        <div style="text-align:center;font-size:11px;color:#9A8F84;">五</div>
+        <div style="text-align:center;font-size:11px;color:#9A8F84;color:#C8818A;">六</div>
+        <div style="text-align:center;font-size:11px;color:#C8818A;">日</div>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
+    <div id="slotsWrap" style="margin-top:20px;display:none;">
+      <div class="sec-title" id="slotsTitle">可預約時段</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;" id="slotGrid"></div>
+    </div>
+    <div id="noSlots" style="display:none;text-align:center;padding:32px 0;">
+      <p style="font-size:13px;color:#9A8F84;">此月份尚無可預約時段</p>
+      <p style="font-size:12px;color:#C4B9AC;margin-top:4px;">請切換月份或聯繫老闆</p>
+    </div>
+  </div>
+
+  <!-- STEP 3：填寫資料 -->
+  <div class="panel" id="step3">
+    <div class="sec-title">填寫資料</div>
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div><label class="form-label" for="f_name">姓名 *</label><input class="form-input" type="text" id="f_name" placeholder="您的姓名" required /></div>
+      <div><label class="form-label" for="f_line">LINE ID *</label><input class="form-input" type="text" id="f_line" placeholder="例：@yourlineid" required /></div>
+      <div><label class="form-label" for="f_phone">手機號碼</label><input class="form-input" type="tel" id="f_phone" placeholder="09xxxxxxxx（選填）" /></div>
+      <div><label class="form-label" for="f_note">備註</label><textarea class="form-input" id="f_note" rows="3" placeholder="例：超短甲、甲型彎曲、想做的款式說明等…" style="resize:none;"></textarea></div>
+    </div>
+    <div style="margin-top:20px;background:linear-gradient(135deg,#F5EEE7,#EDE4D9);border-radius:10px;padding:14px 16px;border:1px solid rgba(180,162,144,.3);">
+      <p style="font-size:11px;color:#4A3F35;line-height:1.8;">
+        ⚠️ 預約保留 <strong>15 分鐘</strong>，逾時取消，定金不退還。<br/>
+        ⚠️ 請準時到即可，<strong>勿提早到</strong>。<br/>
+        ⚠️ 送出即代表您已閱讀並同意<a href="notice.html" style="color:#6B5F54;text-decoration:underline;">預約須知</a>。
+      </p>
+    </div>
+  </div>
+
+  <!-- STEP 4：確認送出 -->
+  <div class="panel" id="step4">
+    <div class="sec-title">確認預約</div>
+    <div style="background:#F9F8F6;border-radius:12px;padding:18px;border:1px solid rgba(212,203,192,.6);margin-bottom:20px;">
+      <div class="summary-row"><span style="color:#9A8F84;font-size:12px;text-transform:uppercase;letter-spacing:.1em;">服務項目</span><span style="font-size:13px;font-weight:500;" id="sum_service">—</span></div>
+      <div class="summary-row" id="sumAddonRow" style="display:none;"><span style="color:#9A8F84;font-size:12px;text-transform:uppercase;letter-spacing:.1em;">加購項目</span><span style="font-size:13px;" id="sum_addon">—</span></div>
+      <div class="summary-row"><span style="color:#9A8F84;font-size:12px;text-transform:uppercase;letter-spacing:.1em;">預約日期</span><span style="font-size:13px;font-weight:500;" id="sum_date">—</span></div>
+      <div class="summary-row"><span style="color:#9A8F84;font-size:12px;text-transform:uppercase;letter-spacing:.1em;">預約時段</span><span style="font-size:13px;font-weight:500;" id="sum_time">—</span></div>
+      <div class="summary-row"><span style="color:#9A8F84;font-size:12px;text-transform:uppercase;letter-spacing:.1em;">姓名</span><span style="font-size:13px;" id="sum_name">—</span></div>
+      <div class="summary-row"><span style="color:#9A8F84;font-size:12px;text-transform:uppercase;letter-spacing:.1em;">LINE ID</span><span style="font-size:13px;" id="sum_line">—</span></div>
+      <div class="summary-row" id="sumNoteRow" style="display:none;"><span style="color:#9A8F84;font-size:12px;text-transform:uppercase;letter-spacing:.1em;">備註</span><span style="font-size:13px;text-align:right;max-width:60%;" id="sum_note">—</span></div>
+      <div class="summary-row" style="border-bottom:none;padding-top:12px;margin-top:4px;"><span style="color:#4A3F35;font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;">預估總金額</span><span class="price-tag" style="font-size:22px;" id="sum_total">—</span></div>
+    </div>
+
+    <!-- 預約成功確認卡 -->
+    <div id="successBox" style="display:none;padding:8px 0 16px;">
+      <div style="text-align:center;margin-bottom:20px;">
+        <div style="width:56px;height:56px;border-radius:50%;background:rgba(107,95,84,.12);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6B5F54" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:#6B5F54;">預約送出成功 ✦</p>
+      </div>
+      <div style="background:linear-gradient(135deg,#F5EEE7,#EDE4D9);border-radius:16px;padding:20px;border:1px solid rgba(180,162,144,.3);margin-bottom:16px;">
+        <p style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#9A8F84;margin-bottom:14px;text-align:center;">預約確認單</p>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(212,203,192,.4);font-size:13px;"><span style="color:#9A8F84;">日期</span><span style="font-weight:500;color:#2C2824;" id="conf_date">—</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(212,203,192,.4);font-size:13px;"><span style="color:#9A8F84;">時段</span><span style="font-weight:500;color:#2C2824;" id="conf_time">—</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(212,203,192,.4);font-size:13px;"><span style="color:#9A8F84;">服務</span><span style="font-weight:500;color:#2C2824;text-align:right;max-width:60%;" id="conf_service">—</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(212,203,192,.4);font-size:13px;"><span style="color:#9A8F84;">姓名</span><span style="color:#2C2824;" id="conf_name">—</span></div>
+        <div style="display:flex;justify-content:space-between;padding:10px 0 0;font-size:13px;"><span style="color:#4A3F35;font-weight:500;">預估金額</span><span style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:#6B5F54;" id="conf_total">—</span></div>
+      </div>
+      <div style="background:#F9F8F6;border-radius:12px;padding:16px;border:1px solid rgba(212,203,192,.5);margin-bottom:16px;">
+        <p style="font-size:11px;font-weight:500;color:#4A3F35;margin-bottom:10px;">📌 請注意</p>
+        <p style="font-size:11px;color:#6B5F54;line-height:1.9;">・請<strong>準時到即可，勿提早到</strong><br/>・預約保留 <strong>15 分鐘</strong>，逾時視同取消<br/>・如需更改請提前 <strong>兩天</strong> 告知<br/>・老闆將透過 LINE 與您確認預約及地址<br/>・<strong>截圖保存此頁面</strong>作為預約憑證 📱</p>
+      <div style="margin-top:10px;background:linear-gradient(135deg,#FDF6F0,#F9EDE3);border-radius:8px;padding:12px 14px;border:1px solid rgba(180,162,144,.3);">
+        <p style="font-size:11px;font-weight:500;color:#4A3F35;margin-bottom:6px;">📸 請傳送指甲照片</p>
+        <p style="font-size:11px;color:#6B5F54;line-height:1.8;">請在官方 LINE 聊天室傳送您<strong>目前指甲的清晰照片</strong><br/>（無論素甲或有做指甲皆需上傳）</p>
+      </div>
+      </div>
+      <!-- 引導客人傳訊息取得確認卡 -->
+      <div style="background:linear-gradient(135deg,#4A3F35,#2C2824);border-radius:16px;padding:20px;text-align:center;margin-bottom:16px;">
+        <p style="font-size:13px;font-weight:600;color:#fff;margin-bottom:4px;">📩 獲取預約確認通知</p>
+        <p style="font-size:10px;color:#C8BDB4;margin-bottom:12px;">預約碼：<span id="bookingCodeDisplay" style="font-weight:600;color:#fff;letter-spacing:.1em;">載入中…</span></p>
+        <p style="font-size:11px;color:#C8BDB4;line-height:1.8;margin-bottom:16px;">點擊下方按鈕，LINE 將自動帶入您的預約碼<br/>直接送出即可收到確認卡片 🎉</p>
+        <a id="lineConfirmBtn"
+           href="https://line.me/R/oaMessage/@949fqzap/?預約確認"
+           target="_blank"
+           style="display:inline-flex;align-items:center;gap:8px;background:#06C755;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:12px 24px;border-radius:50px;text-decoration:none;box-shadow:0 4px 16px rgba(6,199,85,.4);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.952 12.418C19.952 8.007 15.49 4.42 12 4.42c-3.49 0-7.952 3.587-7.952 7.998 0 3.94 3.492 7.23 8.215 7.908.32.069.755.21.865.483.099.247.065.634.032.883l-.14.84c-.043.247-.198.967.847.527 1.045-.44 5.637-3.32 7.692-5.685 1.42-1.558 2.293-3.14 2.293-4.956z"/></svg>
+          傳送「預約確認」
+        </a>
+        <p style="font-size:10px;color:rgba(255,255,255,.4);margin-top:10px;">點擊後 LINE 將自動帶入訊息，直接送出即可</p>
+      </div>
+
+
+      <div style="text-align:center;"><p style="font-size:11px;color:#9A8F84;margin-bottom:4px;">如有疑問請聯絡</p><a href="https://line.me/R/ti/p/@949fqzap" target="_blank" style="font-size:13px;color:#6B5F54;text-decoration:none;font-weight:500;">LINE @949fqzap</a></div>
+      <div style="text-align:center;margin-top:20px;"><a href="index.html" style="font-size:11px;color:#9A8F84;text-decoration:underline;letter-spacing:.1em;">← 返回首頁</a></div>
+    </div>
+  </div>
+
+  <div class="bottom-bar" id="bottomBar">
+    <button class="btn-secondary" id="btnBack" onclick="goBack()" style="display:none;">上一步</button>
+    <button class="btn-primary" id="btnNext" onclick="goNext()" disabled>下一步</button>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbyeI9X0gFMZREwQ-dinwJqlgUEx2dsNy_ZGMdW0RE3C7rjrrRBxR-KkXDM5uA_XWcx19A/exec';
+
+let state = {
+  step:1, service:null, addons:[], totalPrice:0, slots:[],
+  selDate:null, selTime:null, selSlotRow:null,
+  calYear:new Date().getFullYear(), calMonth:new Date().getMonth()
+};
+
+function showToast(msg,dur=3000){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),dur)}
+
+function updateStepUI(){
+  const s=state.step;
+  [1,2,3,4].forEach(i=>{
+    document.getElementById('sc'+i).className='step-circle '+(i<s?'done':i===s?'active':'pending');
+    document.getElementById('sl'+i).className='step-label'+(i===s?' active':'');
+  });
+  [12,23,34].forEach((p,idx)=>{document.getElementById('line'+p).className='step-line'+(idx+1<s?' done':'')});
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('step'+s).classList.add('active');
+  document.getElementById('btnBack').style.display=s>1?'block':'none';
+  const btn=document.getElementById('btnNext');
+  if(s===4){btn.textContent='確認送出';btn.disabled=false}
+  else{btn.textContent='下一步';updateNextBtn()}
+}
+
+function updateNextBtn(){
+  const btn=document.getElementById('btnNext'),s=state.step;
+  if(s===1)btn.disabled=!state.service||(state.service.sub==='french'&&!state.service.subSelected);
+  if(s===2)btn.disabled=!state.selDate||!state.selTime;
+  if(s===3)btn.disabled=false;
+}
+
+function goNext(){
+  if(state.step===3){
+    if(!document.getElementById('f_name').value.trim()||!document.getElementById('f_line').value.trim()){showToast('請填寫姓名與 LINE ID');return}
+  }
+  if(state.step===4){submitBooking();return}
+  if(state.step===2&&!state.selTime){showToast('請選擇預約時段');return}
+  if(state.step===3)buildSummary();
+  state.step++;
+  if(state.step===2)loadSlots();
+  if(state.step===4)buildSummary();
+  updateStepUI();window.scrollTo(0,0);
+}
+
+function goBack(){if(state.step>1){state.step--;updateStepUI();window.scrollTo(0,0)}}
+
+function selectService(el,name,price,subType){
+  document.querySelectorAll('.svc-card').forEach(c=>{c.classList.remove('selected');const s=c.querySelector('.sub-option');if(s)s.style.display='none'});
+  el.classList.add('selected');
+  state.service={name,price,sub:subType,subSelected:subType?null:true};
+  if(subType==='french'){document.getElementById('subFrench').style.display='flex';state.service.subSelected=false}
+  calcTotal();updateNextBtn();
+}
+
+function selectSub(e,label,price){
+  e.stopPropagation();
+  document.querySelectorAll('#subFrench .sub-btn').forEach(b=>b.classList.remove('selected'));
+  e.target.classList.add('selected');
+  state.service.subSelected=true;state.service.subLabel=label;state.service.price=price;
+  calcTotal();updateNextBtn();
+}
+
+function toggleAddon(el,name,price){
+  el.classList.toggle('selected');
+  const idx=state.addons.findIndex(a=>a.name===name);
+  if(idx>-1)state.addons.splice(idx,1);else state.addons.push({name,price});
+  calcTotal();
+}
+
+function calcTotal(){
+  let t=state.service?state.service.price:0;
+  state.addons.forEach(a=>t+=a.price);state.totalPrice=t;
+  document.getElementById('totalPrice').textContent=t>0?'$'+t.toLocaleString()+' 起':'請選擇服務';
+}
+
+async function loadSlots(){
+  document.getElementById('loadingSlots').style.display='block';
+  document.getElementById('calendarWrap').style.display='none';
+  document.getElementById('noSlots').style.display='none';
+  try{const r=await fetch(GAS_URL+'?action=getSlots',{mode:'cors'});const d=await r.json();state.slots=d.slots||[]}
+  catch(e){state.slots=[];showToast('⚠ 無法載入時段，請重試',4000)}
+  document.getElementById('loadingSlots').style.display='none';
+  document.getElementById('calendarWrap').style.display='block';
+  renderCalendar();
+}
+
+function renderCalendar(){
+  const{calYear:y,calMonth:m}=state;
+  const months=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+  document.getElementById('calTitle').textContent=`${y}年 ${months[m]}`;
+  const firstDay=new Date(y,m,1).getDay(),daysInMonth=new Date(y,m+1,0).getDate();
+  const today=new Date();today.setHours(0,0,0,0);
+  const monthSlots=state.slots.filter(s=>{const d=new Date(s.date.replace(/\//g,'-'));return d.getFullYear()===y&&d.getMonth()===m&&s.status==='可預約'});
+  const slotDates=[...new Set(monthSlots.map(s=>s.date))];
+  const grid=document.getElementById('calGrid');grid.innerHTML='';
+  const offset=(firstDay+6)%7;
+  for(let i=0;i<offset;i++){const b=document.createElement('div');b.className='cal-day';grid.appendChild(b)}
+  for(let d=1;d<=daysInMonth;d++){
+    const ds=`${y}/${String(m+1).padStart(2,'0')}/${String(d).padStart(2,'0')}`;
+    const dObj=new Date(y,m,d),hasSlot=slotDates.includes(ds),isPast=dObj<today;
+    const el=document.createElement('div');el.textContent=d;
+    el.className='cal-day'+(hasSlot&&!isPast?' has-slot':'')+(isPast?' past':'')+(dObj.getTime()===today.getTime()?' today':'')+(state.selDate===ds?' selected':'');
+    if(hasSlot&&!isPast)el.onclick=()=>selectDate(ds);
+    grid.appendChild(el);
+  }
+  document.getElementById('noSlots').style.display=slotDates.length===0?'block':'none';
+  if(state.selDate)renderTimeSlots(state.selDate);
+}
+
+function prevMonth(){state.calMonth--;if(state.calMonth<0){state.calMonth=11;state.calYear--}renderCalendar()}
+function nextMonth(){state.calMonth++;if(state.calMonth>11){state.calMonth=0;state.calYear++}renderCalendar()}
+
+function selectDate(ds){state.selDate=ds;state.selTime=null;state.selSlotRow=null;renderCalendar();renderTimeSlots(ds);updateNextBtn()}
+
+function renderTimeSlots(ds){
+  const daySlots=state.slots.filter(s=>s.date===ds);
+  const wrap=document.getElementById('slotsWrap'),grid=document.getElementById('slotGrid');
+  if(daySlots.length===0){wrap.style.display='none';return}
+  wrap.style.display='block';
+  const d=new Date(ds.replace(/\//g,'-')),weeks=['日','一','二','三','四','五','六'];
+  document.getElementById('slotsTitle').textContent=`${ds}（${weeks[d.getDay()]}）可預約時段`;
+  grid.innerHTML='';
+  daySlots.sort((a,b)=>a.time.localeCompare(b.time)).forEach(slot=>{
+    const btn=document.createElement('div');
+    btn.className='slot-btn'+(slot.status==='已預約'?' taken':'')+(state.selTime===slot.time?' selected':'');
+    btn.textContent=slot.time;
+    if(slot.status!=='已預約')btn.onclick=()=>{state.selTime=slot.time;state.selSlotRow=slot.rowIndex;renderTimeSlots(ds);updateNextBtn()};
+    grid.appendChild(btn);
+  });
+}
+
+function buildSummary(){
+  const sl=state.service?state.service.name+(state.service.subLabel?`（${state.service.subLabel}）`:''):'—';
+  document.getElementById('sum_service').textContent=sl;
+  const al=state.addons.map(a=>a.name).join('、');
+  if(al){document.getElementById('sum_addon').textContent=al;document.getElementById('sumAddonRow').style.display='flex'}
+  else document.getElementById('sumAddonRow').style.display='none';
+  document.getElementById('sum_date').textContent=state.selDate||'—';
+  document.getElementById('sum_time').textContent=state.selTime||'—';
+  document.getElementById('sum_name').textContent=document.getElementById('f_name').value.trim()||'—';
+  document.getElementById('sum_line').textContent=document.getElementById('f_line').value.trim()||'—';
+  const note=document.getElementById('f_note').value.trim();
+  if(note){document.getElementById('sum_note').textContent=note;document.getElementById('sumNoteRow').style.display='flex'}
+  else document.getElementById('sumNoteRow').style.display='none';
+  document.getElementById('sum_total').textContent='$'+state.totalPrice.toLocaleString()+' 起';
+}
+
+async function submitBooking(){
+  const btn=document.getElementById('btnNext');btn.textContent='送出中…';btn.disabled=true;
+  const sl=state.service?state.service.name+(state.service.subLabel?`（${state.service.subLabel}）`:''):'';
+  const payload={
+    action:'booking',name:document.getElementById('f_name').value.trim(),
+    lineId:document.getElementById('f_line').value.trim(),phone:document.getElementById('f_phone').value.trim(),
+    service:sl,addons:state.addons.map(a=>a.name).join('、'),totalPrice:state.totalPrice,
+    date:state.selDate,time:state.selTime,slotRowIndex:state.selSlotRow,
+    note:document.getElementById('f_note').value.trim(),source:'Shizuku.nails 雫 官網預約系統',
+    timestamp:new Date().toLocaleString('zh-TW',{timeZone:'Asia/Taipei'})
+  };
+  try{
+    await fetch(GAS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    document.getElementById('conf_date').textContent=state.selDate||'—';
+    document.getElementById('conf_time').textContent=state.selTime||'—';
+    document.getElementById('conf_service').textContent=sl;
+    document.getElementById('conf_name').textContent=document.getElementById('f_name').value.trim();
+    document.getElementById('conf_total').textContent='$'+state.totalPrice.toLocaleString()+' 起';
+    // 把預約資料存到 sessionStorage，供 Webhook 推播時使用
+    sessionStorage.setItem('bf_booking', JSON.stringify({
+      date: state.selDate,
+      time: state.selTime,
+      service: sl,
+      addons: state.addons.map(a=>a.name).join('、'),
+      name: document.getElementById('f_name').value.trim(),
+      lineId: document.getElementById('f_line').value.trim(),
+      total: state.totalPrice
+    }));
+    // 從 GAS 回傳取得預約碼（no-cors 模式拿不到，改用備用方案）
+    // 用日期+時間+亂數在前端也產生一個預約碼
+    const dateCode = (state.selDate||'').replace(/\//g,'');
+    const rand = Math.floor(1000 + Math.random() * 9000);
+    const bookingCode = 'BF' + dateCode + rand;
+
+    // 更新按鈕連結帶入預約碼
+    const lineBtn = document.getElementById('lineConfirmBtn');
+    if (lineBtn) {
+      lineBtn.href = 'https://line.me/R/oaMessage/@949fqzap/?' + encodeURIComponent('預約確認 ' + bookingCode);
+    }
+    // 顯示預約碼
+    const codeEl = document.getElementById('bookingCodeDisplay');
+    if (codeEl) codeEl.textContent = bookingCode;
+
+    document.querySelector('#step4 .sec-title').style.display='none';
+    document.querySelector('#step4 > div:first-of-type').style.display='none';
+    document.getElementById('successBox').style.display='block';
+    document.getElementById('bottomBar').style.display='none';
+  }catch(e){
+    showToast('⚠ 送出失敗，請透過 LINE 聯絡我們',4000);
+    btn.textContent='確認送出';btn.disabled=false;
+  }
+}
+
+updateStepUI();
+</script>
+</body>
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Shizuku.nails 雫｜台中私人美甲工作室｜法式美甲・漸層・客製設計</title>
+  <meta name="description" content="Shizuku.nails 雫 是台中高質感私人美甲工作室，專精法式美甲、單色漸層、造型款與傳圖客製設計，皆含基礎保養。老錢風極簡美甲，LINE 預約：@949fqzap" />
+  <meta name="keywords" content="台中美甲,台中美甲推薦,法式美甲台中,台中漸層美甲,台中客製美甲,老錢風美甲,台中私人美甲工作室,Shizuku.nails 雫美甲,台中美甲預約,台中凝膠美甲" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Shizuku.nails 雫 Nail Studio" />
+  <link rel="canonical" href="https://shizuku-nails.vercel.app/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Shizuku.nails 雫｜台中私人美甲工作室" />
+  <meta property="og:description" content="台中高質感私人美甲工作室，法式美甲・單色漸層・傳圖客製。LINE 預約 @949fqzap" />
+  <meta property="og:image" content="https://shizuku-nails.vercel.app/og-cover.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://shizuku-nails.vercel.app/" />
+  <meta property="og:locale" content="zh_TW" />
+  <meta property="og:site_name" content="Shizuku.nails 雫" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Shizuku.nails 雫｜台中私人美甲工作室" />
+  <meta name="twitter:description" content="台中高質感私人美甲工作室，法式美甲・單色漸層・傳圖客製。LINE 預約 @949fqzap" />
+  <meta name="twitter:image" content="https://shizuku-nails.vercel.app/og-cover.jpg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["BeautySalon", "LocalBusiness"],
+    "name": "Shizuku.nails 雫",
+    "alternateName": "Shizuku.nails 雫 美甲工作室",
+    "description": "台中高質感私人美甲工作室，提供法式美甲、單色漸層、造型款設計、傳圖客製設計，皆含基礎保養，LINE 預約制。",
+    "url": "https://shizuku-nails.vercel.app/",
+    "image": "https://shizuku-nails.vercel.app/og-cover.jpg",
+    "logo": "https://shizuku-nails.vercel.app/logo.png",
+    "priceRange": "$1200–$2200",
+    "currenciesAccepted": "TWD",
+    "paymentAccepted": "Cash, LINE Pay, Transfer",
+    "address": { "@type": "PostalAddress", "addressLocality": "台中市", "addressRegion": "台中", "addressCountry": "TW" },
+    "geo": { "@type": "GeoCoordinates", "latitude": 24.1477, "longitude": 120.6736 },
+    "areaServed": { "@type": "City", "name": "台中市" },
+    "contactPoint": { "@type": "ContactPoint", "contactType": "Reservations", "url": "https://line.me/R/ti/p/@949fqzap", "availableLanguage": ["Chinese", "Taiwanese"] },
+    "sameAs": ["https://line.me/R/ti/p/@949fqzap"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog", "name": "美甲服務項目",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "單色漸層" }, "price": "1600", "priceCurrency": "TWD" },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "法式美甲（無底色）" }, "price": "1700", "priceCurrency": "TWD" },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "造型款設計" }, "price": "1400", "priceCurrency": "TWD" },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "傳圖客製設計" }, "price": "2000", "priceCurrency": "TWD" }
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org", "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "首頁", "item": "https://shizuku-nails.vercel.app/" },
+      { "@type": "ListItem", "position": 2, "name": "美甲服務", "item": "https://shizuku-nails.vercel.app/#services" },
+      { "@type": "ListItem", "position": 3, "name": "預約須知", "item": "https://shizuku-nails.vercel.app/#notice" }
+    ]
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { parchment:'#F9F8F6', oat:'#E5E0D8', linen:'#D4CBC0', mink:'#9A8F84', bark:'#6B5F54', umber:'#4A3F35', charcoal:'#2C2824', warm:'#7D6B5A', cream:'#F4EDE6' },
+          fontFamily: { serif:['Cormorant Garamond','Georgia','serif'], sans:['DM Sans','sans-serif'] },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --c-bg:#F2EDE7; --c-card:#F9F8F6; --c-linen:#D4CBC0; --c-mink:#9A8F84;
+      --c-bark:#6B5F54; --c-umber:#4A3F35; --c-charcoal:#2C2824;
+      --transition:0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--c-bg);font-family:'DM Sans',sans-serif;color:var(--c-charcoal);-webkit-font-smoothing:antialiased}
+    ::-webkit-scrollbar{width:4px} ::-webkit-scrollbar-track{background:var(--c-bg)} ::-webkit-scrollbar-thumb{background:var(--c-linen);border-radius:2px}
+
+    .page-shell{max-width:430px;margin:0 auto;background:var(--c-bg);min-height:100vh;box-shadow:0 0 60px rgba(44,40,36,.08)}
+    .top-nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(242,237,231,.88);border-bottom:1px solid rgba(212,203,192,.5)}
+
+    /* Hero */
+    .hero-section{position:relative;height:480px;overflow:hidden}
+    .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+    .hero-fallback{position:absolute;inset:0;background:linear-gradient(145deg,#C8BDB4 0%,#B5A89C 25%,#A39487 50%,#8E7F72 75%,#7A6C60 100%);z-index:0}
+    .hero-grain{position:absolute;inset:0;z-index:1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");mix-blend-mode:multiply;opacity:.6;pointer-events:none}
+    .hero-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(170deg,rgba(44,40,36,.25) 0%,rgba(74,63,53,.60) 60%,rgba(44,40,36,.80) 100%)}
+    .hero-content{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:3rem;text-align:center}
+
+    /* Cards */
+    .service-card{background:var(--c-card);border-radius:16px;overflow:hidden;border:1px solid rgba(212,203,192,.6);box-shadow:0 2px 16px rgba(44,40,36,.06);transition:transform var(--transition),box-shadow var(--transition)}
+    .service-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(44,40,36,.13)}
+    .card-thumb{height:200px;position:relative;overflow:hidden;background:linear-gradient(135deg,#D4CBC0,#B8AD9F)}
+    .card-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+    .service-card:hover .card-thumb img{transform:scale(1.05)}
+    .card-badge{position:absolute;top:12px;left:12px;z-index:1}
+
+    /* Buttons */
+    .btn-line{display:block;width:100%;background:var(--c-umber);color:#fff;text-align:center;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:12px;border-radius:8px;text-decoration:none;transition:background var(--transition),letter-spacing var(--transition),transform .15s ease}
+    .btn-line:hover{background:var(--c-charcoal);letter-spacing:.28em}
+    .btn-line:active{transform:scale(.98)}
+    .btn-line-primary{background:#06C755;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;border-radius:50px;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;letter-spacing:.1em;text-decoration:none;box-shadow:0 6px 20px rgba(6,199,85,.35);transition:all var(--transition)}
+    .btn-line-primary:hover{background:#05B34C;transform:translateY(-2px);box-shadow:0 10px 28px rgba(6,199,85,.4)}
+
+    .addon-row{display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1px solid rgba(212,203,192,.5);font-size:13px}
+    .addon-row:last-child{border-bottom:none}
+
+    .notice-box{background:linear-gradient(135deg,#F5EEE7 0%,#EDE4D9 100%);border:1px solid rgba(180,162,144,.4);border-radius:16px}
+    .notice-item-row{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(212,203,192,.4)}
+    .notice-item-row:last-child{border-bottom:none;padding-bottom:0}
+    .notice-num{width:22px;height:22px;flex-shrink:0;border-radius:50%;background:var(--c-bark);color:#fff;font-size:10px;font-weight:500;display:flex;align-items:center;justify-content:center;margin-top:1px}
+
+    .modal-backdrop{position:fixed;inset:0;background:rgba(44,40,36,.6);backdrop-filter:blur(6px);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
+    .modal-backdrop.active{display:flex}
+    .modal-box{background:var(--c-card);border-radius:20px;padding:32px 24px;width:100%;max-width:400px;box-shadow:0 24px 64px rgba(44,40,36,.25);animation:fadeUp .35s ease both}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .form-input{width:100%;background:var(--c-bg);border:1px solid var(--c-linen);border-radius:8px;padding:10px 14px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--c-charcoal);outline:none;transition:border-color var(--transition),box-shadow var(--transition);appearance:none}
+    .form-input:focus{border-color:var(--c-bark);box-shadow:0 0 0 3px rgba(107,95,84,.12)}
+    .form-label{display:block;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--c-mink);margin-bottom:6px;font-weight:500}
+
+    .section-title-wrap{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+    .section-title-wrap .line{flex:1;height:1px;background:var(--c-linen)}
+    .section-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;font-weight:400;color:var(--c-bark);letter-spacing:.1em;white-space:nowrap}
+
+    .badge{display:inline-block;font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:.18em;text-transform:uppercase;padding:2px 10px;background:rgba(44,40,36,.55);color:rgba(255,255,255,.85);border-radius:2px;backdrop-filter:blur(4px)}
+
+    [data-animate]{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+    [data-animate].visible{opacity:1;transform:translateY(0)}
+
+    .toast{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-80px);background:var(--c-charcoal);color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;padding:12px 24px;border-radius:50px;z-index:200;transition:transform .4s cubic-bezier(.34,1.56,.64,1);white-space:nowrap}
+    .toast.show{transform:translateX(-50%) translateY(0)}
+  </style>
+</head>
+
+<body>
+<div class="page-shell">
+
+  <!-- 導覽列 -->
+  <nav class="top-nav px-5 py-3 flex items-center justify-between">
+    <a href="#" class="font-serif text-lg font-light tracking-[0.2em] text-charcoal italic">Shizuku.nails 雫</a>
+    <a href="notice.html"
+       class="flex items-center gap-1.5 text-xs font-sans tracking-widest uppercase text-bark border border-bark/40 rounded-full px-4 py-1.5 hover:bg-bark hover:text-white transition-all duration-300">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      立即預約
+    </a>
+  </nav>
+
+  <!-- Hero Banner -->
+  <!-- =========================================================
+       圖片對應：hero.jpg = 工作室氛圍首圖
+       ========================================================= -->
+  <header class="hero-section" id="top">
+    <div class="hero-fallback"></div>
+    <img src="hero.jpg" alt="Shizuku.nails 雫 台中私人美甲工作室" class="hero-img" onerror="this.style.opacity='0'">
+    <div class="hero-grain"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <div style="width:40px;height:1px;background:rgba(255,255,255,0.35);"></div>
+        <span class="badge">Private Nail Studio · Taichung</span>
+        <div style="width:40px;height:1px;background:rgba(255,255,255,0.35);"></div>
+      </div>
+      <h1 style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;letter-spacing:0.25em;color:#fff;line-height:1;margin-bottom:8px;">Shizuku.nails 雫</h1>
+      <p style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:0.35em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:28px;">Refined Nails · Est. 2024</p>
+      <!-- 主要預約按鈕 -->
+      <a href="notice.html" class="btn-line-primary" style="background:#4A3F35;box-shadow:0 6px 20px rgba(44,40,36,0.4);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        線上預約
+      </a>
+      <!-- 次要 LINE 按鈕 -->
+      <a href="https://line.me/R/ti/p/@949fqzap" target="_blank" rel="noopener"
+         style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:10px;padding:10px 20px;border-radius:50px;border:1px solid rgba(255,255,255,0.35);color:rgba(255,255,255,0.75);font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:0.15em;text-decoration:none;transition:all 0.3s ease;"
+         onmouseover="this.style.borderColor='rgba(255,255,255,0.7)';this.style.color='#fff'"
+         onmouseout="this.style.borderColor='rgba(255,255,255,0.35)';this.style.color='rgba(255,255,255,0.75)'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.952 12.418C19.952 8.007 15.49 4.42 12 4.42c-3.49 0-7.952 3.587-7.952 7.998 0 3.94 3.492 7.23 8.215 7.908.32.069.755.21.865.483.099.247.065.634.032.883l-.14.84c-.043.247-.198.967.847.527 1.045-.44 5.637-3.32 7.692-5.685 1.42-1.558 2.293-3.14 2.293-4.956z"/></svg>
+        或加入 LINE 詢問
+      </a>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:20px;opacity:0.35;">
+        <div style="width:20px;height:1px;background:#fff;"></div>
+        <div style="width:4px;height:4px;border-radius:50%;background:#fff;"></div>
+        <div style="width:20px;height:1px;background:#fff;"></div>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding:28px 16px 120px;">
+    <h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">台中美甲推薦｜Shizuku.nails 雫 私人美甲工作室｜法式美甲・漸層・客製設計</h2>
+
+    <!-- 服務卡片 -->
+    <section id="services" style="margin-bottom:36px;">
+      <div class="section-title-wrap" data-animate>
+        <div class="line"></div>
+        <h3 class="section-title">Services</h3>
+        <div class="line"></div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:16px;">
+
+        <!-- =========================================================
+             卡片 1｜單色漸層
+             圖片檔名：ombre.jpg
+             ========================================================= -->
+        <article class="service-card" data-animate style="transition-delay:0.05s">
+          <div class="card-thumb">
+            <img src="ombre.jpg" alt="台中單色漸層美甲 Shizuku.nails 雫" loading="lazy" onerror="this.style.opacity='0'">
+            <div class="card-badge"><span class="badge">Signature</span></div>
+          </div>
+          <div style="padding:18px;">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px;">
+              <h4 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:#2C2824;letter-spacing:0.05em;">單色／漸層</h4>
+              <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:#6B5F54;">$600</span>
+            </div>
+            <p style="font-size:12px;color:#9A8F84;line-height:1.7;margin-bottom:14px;">含基礎保養。可跳色／鏡面／貓眼，細膩工藝呈現柔焦質感，適合追求低調優雅的妳。</p>
+            <div style="display:flex;gap:8px;">
+              <a href="notice.html" class="btn-line" style="flex:1.2;">立即預約</a>
+              <a href="https://line.me/R/oaMessage/@949fqzap/?妳好，我想詢問關於 單色漸層美甲" class="btn-line" style="flex:1;background:#9A8F84;">LINE 詢問</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- =========================================================
+             卡片 2｜法式美甲
+             圖片檔名：french.jpg
+             ========================================================= -->
+        <article class="service-card" data-animate style="transition-delay:0.1s">
+          <div class="card-thumb" style="background:linear-gradient(135deg,#C5BDB3,#A9A096);">
+            <img src="french.jpg" alt="台中法式美甲 Shizuku.nails 雫" loading="lazy" onerror="this.style.opacity='0'">
+            <div class="card-badge"><span class="badge">Classic</span></div>
+          </div>
+          <div style="padding:18px;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px;">
+              <h4 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:#2C2824;letter-spacing:0.05em;">鏡面／貓眼／法式美甲</h4>
+              <div style="text-align:right;">
+                <div style="font-size:12px;color:#9A8F84;">無底色 <span style="font-family:'Cormorant Garamond',serif;font-size:18px;color:#6B5F54;font-weight:300;">$800</span></div>
+                <div style="font-size:12px;color:#9A8F84;">有底色 <span style="font-family:'Cormorant Garamond',serif;font-size:18px;color:#6B5F54;font-weight:300;">$900</span></div>
+              </div>
+            </div>
+            <p style="font-size:12px;color:#9A8F84;line-height:1.7;margin-bottom:14px;">含基礎保養。鏡面、貓眼、法式三種風格，無底色純淨俐落，有底色層次更豐富。</p>
+            <div style="display:flex;gap:8px;">
+              <a href="notice.html" class="btn-line" style="flex:1.2;">立即預約</a>
+              <a href="https://line.me/R/oaMessage/@949fqzap/?妳好，我想詢問關於 法式美甲" class="btn-line" style="flex:1;background:#9A8F84;">LINE 詢問</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- =========================================================
+             卡片 3｜造型款設計
+             圖片檔名：design.jpg
+             ========================================================= -->
+        <article class="service-card" data-animate style="transition-delay:0.15s">
+          <div class="card-thumb" style="background:linear-gradient(135deg,#B8AFA5,#9E938A);">
+            <img src="design.jpg" alt="台中造型款美甲設計 Shizuku.nails 雫" loading="lazy" onerror="this.style.opacity='0'">
+            <div class="card-badge"><span class="badge">Popular</span></div>
+          </div>
+          <div style="padding:18px;">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px;">
+              <h4 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:#2C2824;letter-spacing:0.05em;">造型款設計</h4>
+              <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:#6B5F54;">$1,100 起</span>
+            </div>
+            <p style="font-size:12px;color:#9A8F84;line-height:1.7;margin-bottom:14px;">含基礎保養，依款式計價，不含延甲・飾品。</p>
+            <div style="display:flex;gap:8px;">
+              <a href="notice.html" class="btn-line" style="flex:1.2;">立即預約</a>
+              <a href="https://line.me/R/oaMessage/@949fqzap/?妳好，我想詢問關於 造型款美甲設計" class="btn-line" style="flex:1;background:#9A8F84;">LINE 詢問</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- =========================================================
+             卡片 4｜傳圖客製設計
+             圖片檔名：care.jpg
+             ========================================================= -->
+        <article class="service-card" data-animate style="transition-delay:0.2s">
+          <div class="card-thumb" style="background:linear-gradient(135deg,#A8A09A,#8E8680);">
+            <img src="care.jpg" alt="台中傳圖客製美甲設計 Shizuku.nails 雫" loading="lazy" onerror="this.style.opacity='0'">
+            <div class="card-badge"><span class="badge">Custom</span></div>
+          </div>
+          <div style="padding:18px;">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px;">
+              <h4 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:#2C2824;letter-spacing:0.05em;">傳圖客製設計</h4>
+              <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:#6B5F54;">$1,500 起</span>
+            </div>
+            <p style="font-size:12px;color:#9A8F84;line-height:1.7;margin-bottom:14px;">依圖報價，延甲・飾品另計。最多三款為限，為你量身打造專屬指尖。</p>
+            <div style="display:flex;gap:8px;">
+              <a href="notice.html" class="btn-line" style="flex:1.2;">立即預約</a>
+              <a href="https://line.me/R/oaMessage/@949fqzap/?妳好，我想詢問關於 傳圖客製美甲設計" class="btn-line" style="flex:1;background:#9A8F84;">LINE 詢問</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 附加服務 -->
+    <section id="addons" style="margin-bottom:36px;" data-animate>
+      <div class="section-title-wrap">
+        <div class="line"></div><h3 class="section-title">Add-ons</h3><div class="line"></div>
+      </div>
+      <div style="background:#F9F8F6;border-radius:16px;padding:20px;border:1px solid rgba(212,203,192,.6);box-shadow:0 2px 12px rgba(44,40,36,.05);">
+        <p style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7D6B5A;font-weight:500;margin-bottom:8px;">卸甲服務</p>
+        <div class="addon-row"><span style="color:#2C2824;">我家卸甲續作</span><span style="color:#6B5F54;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;">$200</span></div>
+        <div class="addon-row"><span style="color:#2C2824;">他店卸甲續作 <small style="color:#9A8F84;">(難卸 +$150)</small></span><span style="color:#6B5F54;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;">$300</span></div>
+        <div class="addon-row" style="margin-bottom:16px;"><span style="color:#2C2824;">我家單卸甲 <small style="color:#9A8F84;">(不接他店)</small></span><span style="color:#6B5F54;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;">$400</span></div>
+        <p style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7D6B5A;font-weight:500;margin-bottom:8px;">延甲 · 飾品</p>
+        <div class="addon-row"><span style="color:#2C2824;">延甲（最多兩指）</span><span style="color:#6B5F54;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;">$150 / 指</span></div>
+        <div class="addon-row" style="margin-bottom:16px;"><span style="color:#2C2824;">卸鑽、飾品 <small style="color:#9A8F84;">(請事先告知)</small></span><span style="color:#6B5F54;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;">$50 / 指</span></div>
+        <p style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7D6B5A;font-weight:500;margin-bottom:8px;">特殊加購（勿自填）</p>
+        <div class="addon-row"><span style="color:#2C2824;">調色</span><span style="color:#6B5F54;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;">+$100</span></div>
+        <div class="addon-row"><span style="color:#2C2824;">上翹甲、甲型彎曲</span><span style="color:#6B5F54;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;">+$200</span></div>
+        <div class="addon-row" style="margin-bottom:16px;"><span style="color:#2C2824;">超短甲（指甲齊肉）</span><span style="color:#6B5F54;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;">+$100</span></div>
+        <p style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7D6B5A;font-weight:500;margin-bottom:8px;">補甲政策</p>
+        <div style="background:rgba(242,237,231,.8);border-radius:8px;padding:12px 14px;">
+          <p style="font-size:12px;color:#4A3F35;line-height:1.8;">施作後 <strong style="color:#6B5F54;">7 天內免費補</strong>（從施作當天起算）。<br/>前端磨損、缺角、掉落不在補甲範圍。<br/>逾 5 天：單指補色 $150。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 預約須知 -->
+    <section id="notice" style="margin-bottom:36px;" data-animate>
+      <div class="section-title-wrap">
+        <div class="line"></div><h3 class="section-title">預約須知</h3><div class="line"></div>
+      </div>
+      <div class="notice-box" style="padding:20px 20px 16px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid rgba(212,203,192,.5);">
+          <div style="width:32px;height:32px;border-radius:50%;background:rgba(107,95,84,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6B5F54" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>
+          </div>
+          <p style="font-size:12px;color:#4A3F35;font-weight:500;">請在預約前詳閱以下規範，謝謝配合 🙏</p>
+        </div>
+        <div>
+          <div class="notice-item-row"><div class="notice-num">1</div><p style="font-size:12px;color:#4A3F35;line-height:1.75;">請<strong>準時到即可，勿提早到</strong>。</p></div>
+          <div class="notice-item-row"><div class="notice-num">2</div><p style="font-size:12px;color:#4A3F35;line-height:1.75;">預約保留 <strong>5 分鐘</strong>，逾時將直接取消當日預約，<strong>定金不退還</strong>。不接受塞車、迷路、找停車位等理由，請提早出門。</p></div>
+          <div class="notice-item-row"><div class="notice-num">3</div><p style="font-size:12px;color:#4A3F35;line-height:1.75;">逾時 6–10 分鐘內若堅持施作，為避免影響下一位客人，款式將由我們決定改為<strong>全暈染 $2,200</strong>，顏色由我們決定。</p></div>
+          <div class="notice-item-row"><div class="notice-num">4</div><p style="font-size:12px;color:#4A3F35;line-height:1.75;">取消過再預約者（需審核），須先繳付定金 <strong>$1,000</strong>；再次取消或更改時間，定金不退還。</p></div>
+          <div class="notice-item-row"><div class="notice-num">5</div><p style="font-size:12px;color:#4A3F35;line-height:1.75;">詢問、報價達 <strong>三次（含）</strong>仍未預約，或已讀 / 不讀不回，之後訊息不再回覆。</p></div>
+          <div class="notice-item-row" style="border-bottom:none;"><div class="notice-num">6</div><p style="font-size:12px;color:#4A3F35;line-height:1.75;">本網頁與官方 LINE 已說明之資訊，若再詢問將不予回覆。</p></div>
+        </div>
+        <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(212,203,192,.5);text-align:center;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:#9A8F84;letter-spacing:.1em;">感謝您的理解，期待為您服務 ✦</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 會員入口 -->
+    <section id="member" style="margin-bottom:36px;" data-animate>
+      <div style="background:linear-gradient(135deg,#4A3F35,#2C2824);border-radius:16px;padding:28px 20px;text-align:center;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-30px;right:-30px;width:140px;height:140px;border-radius:50%;border:1px solid rgba(255,255,255,.06);pointer-events:none;"></div>
+        <div style="position:absolute;bottom:-20px;left:-20px;width:100px;height:100px;border-radius:50%;border:1px solid rgba(255,255,255,.04);pointer-events:none;"></div>
+        <p style="font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:8px;">Membership</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:#fff;letter-spacing:.1em;margin-bottom:8px;">加入會員名單</h3>
+        <p style="font-size:12px;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:20px;">留下您的 LINE ID 與想預約的服務項目，<br/>老闆將優先主動聯繫會員名單中的朋友。</p>
+        <button onclick="openModal()" style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding:12px 28px;border-radius:50px;cursor:pointer;transition:all .3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'">填寫預約表單</button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="text-align:center;padding-top:8px;">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
+        <div style="flex:1;height:1px;background:#D4CBC0;"></div>
+        <div style="width:4px;height:4px;border-radius:50%;background:#9A8F84;"></div>
+        <div style="flex:1;height:1px;background:#D4CBC0;"></div>
+      </div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;letter-spacing:.25em;color:#6B5F54;font-style:italic;margin-bottom:4px;">Shizuku.nails 雫</p>
+      <p style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#9A8F84;margin-bottom:12px;">Private Nail Studio · Taichung, Taiwan</p>
+      <a href="https://line.me/R/ti/p/@949fqzap" target="_blank" rel="noopener" style="font-size:11px;color:#9A8F84;text-decoration:none;letter-spacing:.1em;">LINE @949fqzap</a>
+      <p style="font-size:10px;color:#C4B9AC;margin-top:12px;">© 2025 Shizuku.nails 雫. All rights reserved.</p>
+    </footer>
+  </main>
+</div>
+
+<!-- Modal -->
+<div class="modal-backdrop" id="memberModal" onclick="handleBackdropClick(event)">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+      <div>
+        <p style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#9A8F84;margin-bottom:2px;">Membership</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#2C2824;letter-spacing:.05em;">填寫預約資訊</h3>
+      </div>
+      <button onclick="closeModal()" style="width:32px;height:32px;border-radius:50%;background:#F2EDE7;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#9A8F84;font-size:18px;line-height:1;">×</button>
+    </div>
+    <form id="memberForm" onsubmit="submitForm(event)" style="display:flex;flex-direction:column;gap:14px;">
+      <div><label class="form-label" for="f_name">姓名 *</label><input class="form-input" type="text" id="f_name" name="name" placeholder="您的姓名" required /></div>
+      <div><label class="form-label" for="f_line">LINE ID *</label><input class="form-input" type="text" id="f_line" name="lineId" placeholder="例：@yourlineid" required /></div>
+      <div>
+        <label class="form-label" for="f_service">想預約的服務 *</label>
+        <select class="form-input" id="f_service" name="service" required>
+          <option value="" disabled selected>請選擇服務項目</option>
+          <option value="單色漸層 $1,600">單色漸層 $1,600</option>
+          <option value="法式美甲（無底色）$1,700">法式美甲（無底色）$1,700</option>
+          <option value="法式美甲（有底色）$1,900">法式美甲（有底色）$1,900</option>
+          <option value="造型款設計 $1,400起">造型款設計 $1,400起</option>
+          <option value="傳圖客製設計 $2,000起">傳圖客製設計 $2,000起</option>
+          <option value="尚未決定">尚未決定，想先詢問</option>
+        </select>
+      </div>
+      <div><label class="form-label" for="f_note">備註</label><textarea class="form-input" id="f_note" name="note" rows="2" placeholder="例：想加延甲、有特殊甲型等…" style="resize:none;"></textarea></div>
+      <button type="submit" id="submitBtn" style="width:100%;background:#4A3F35;color:#fff;font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding:13px;border-radius:8px;border:none;cursor:pointer;transition:background .3s ease;" onmouseover="this.style.background='#2C2824'" onmouseout="this.style.background='#4A3F35'">送出資料</button>
+      <p style="font-size:10px;color:#9A8F84;text-align:center;line-height:1.6;">資料僅供 Shizuku.nails 雫 內部使用，不會提供給第三方。</p>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast">✦ 資料已送出，老闆將盡快與您聯繫！</div>
+
+<script>
+const GAS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyZ8tO3VuLU47KZovc537eP3oMAruYuoVTHY6i_GNfpfMS1uRDkEV8mwp2EAIlRHgczwA/exec';
+
+function openModal(){document.getElementById('memberModal').classList.add('active');document.body.style.overflow='hidden'}
+function closeModal(){document.getElementById('memberModal').classList.remove('active');document.body.style.overflow=''}
+function handleBackdropClick(e){if(e.target===document.getElementById('memberModal'))closeModal()}
+function showToast(msg){const t=document.getElementById('toast');if(msg)t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3500)}
+
+async function submitForm(e){
+  e.preventDefault();
+  const btn=document.getElementById('submitBtn');
+  btn.textContent='送出中…';btn.disabled=true;
+  const formData={
+    name:document.getElementById('f_name').value.trim(),
+    lineId:document.getElementById('f_line').value.trim(),
+    service:document.getElementById('f_service').value,
+    note:document.getElementById('f_note').value.trim(),
+    source:'Shizuku.nails 雫 官網',
+    timestamp:new Date().toLocaleString('zh-TW',{timeZone:'Asia/Taipei'})
+  };
+  try{
+    await fetch(GAS_WEBHOOK_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(formData)});
+    closeModal();showToast('✦ 資料已送出，老闆將盡快與您聯繫！');document.getElementById('memberForm').reset();
+  }catch(err){showToast('⚠ 送出失敗，請直接透過 LINE 聯絡我們')}
+  finally{btn.textContent='送出資料';btn.disabled=false}
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');obs.unobserve(entry.target)}});
+  },{threshold:0.12});
+  document.querySelectorAll('[data-animate]').forEach(el=>obs.observe(el));
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+</script>
+</body>
+</html>
