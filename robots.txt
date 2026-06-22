@@ -1,4 +1,55 @@
+# ────────────────────────────────────
+# robots.txt — SEO + GEO 完整版
+# ────────────────────────────────────
+
+# 一般搜尋引擎
 User-agent: *
+Allow: /
+
+# ── Anthropic / Claude 系列 ──
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# ── OpenAI / ChatGPT 系列 ──
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# ── Perplexity 系列 ──
+User-agent: PerplexityBot
+Allow: /
+
+# ── Google AI 系列 ──
+User-agent: Google-Extended
+Allow: /
+
+# ── Bing / Microsoft 系列 ──
+User-agent: Bingbot
+Allow: /
+
+# ── ByteDance 系列 ──
+User-agent: Bytespider
+Allow: /
+
+# ── 其他 AI 系列 ──
+User-agent: cohere-ai
+Allow: /
+
+User-agent: FacebookBot
 Allow: /
 
 Sitemap: https://shizuku-nails.vercel.app/sitemap.xml
